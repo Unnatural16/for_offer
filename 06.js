@@ -1,21 +1,24 @@
+function qiuhe(num){
+    return num%10+parseInt(num/10)
+}
 /**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
+ * @param {number} m
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
  */
-/**
- * @param {ListNode} head
- * @return {number[]}
- */
-var reversePrint = function(head) {
-    let result = [];
-    function code(node){
-        if(node===null) return
-        code(node.next)
-        result.push(node.value);
+var movingCount = function(m, n, k) {
+    let flag=[]
+    let result=0
+    function code(x,y){
+        if(qiuhe(x)+qiuhe(y)>k||x>=m||y>=n||flag[y*m+x]){
+            return
+        }
+        result++
+        flag[y*m+x]=true
+        code(x+1,y)
+        code(x,y+1)
     }
-    code(head)
+    code(0,0)
     return result
 };
