@@ -17,4 +17,4 @@ var findNthDigit = function(n) {
     }else{
         return parseInt(number.toString()[idx-1])
     }
-};4
+};
